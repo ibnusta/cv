@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id" id="html_root">
+<head>
+    <!-- 
+    ======================================================
+    Nama Mata Kuliah: Pemrograman Web I
+    Nama            : Ibnu Syifa Takbir Adha
+    NIM             : 250401010408
+    Kelas           : IF208
+    Deskripsi       : UJIAN TENGAH SEMESTER SEMESTER GENAP TAHUN AJARAN 2025/2026
+    ======================================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Ibnu Syifa Takbir Adha</title>
+    
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Inisialisasi Tema (Mencegah Flash Putih saat Refresh) -->
+    <script>
+        if (localStorage.getItem("darkmode") == 1) { document.documentElement.classList.add('darkmode'); }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        
+        /* --- VARIABEL TEMA LIGHT (DEFAULT) --- */
+        :root {
+            --color-primary-accent: #31b5d5;
+            --color-secondary-accent: #0891b2;
+            --color-body-bg: #f8fafc;
+            --color-primary-text: #0f172a;
+            --color-text-2: #64748b;
+            --color-text-6: #475569;
+            --color-surface-bg-1: #f1f5f9;
+            --color-surface-bg-3: #ffffff;
+            --color-surface-bg-5: rgba(49, 181, 213, 0.1);
+            --color-border-1: rgba(15, 23, 42, 0.08);
+        }
+        
+        /* --- VARIABEL TEMA DARK --- */
+        html.darkmode {
+            --color-body-bg: #09090b;
+            --color-primary-text: #f8fafc;
+            --color-text-2: #94a3b8;
+            --color-text-6: #cbd5e1;
+            --color-surface-bg-1: rgba(255, 255, 255, 0.05);
+            --color-surface-bg-3: #131316;
+            --color-surface-bg-5: rgba(49, 181, 213, 0.1);
+            --color-border-1: rgba(255, 255, 255, 0.08);
+            color-scheme: dark;
+        }
+
+        body {
+            background-color: var(--color-body-bg);
+            color: var(--color-primary-text);
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        a { color: var(--color-primary-accent); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--color-secondary-accent); text-decoration: underline; }
+
+        /* --- TOMBOL DARK/LIGHT MODE --- */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-surface-bg-3);
+            border: 1px solid var(--color-border-1);
+            color: var(--color-text-6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); color: var(--color-primary-accent); border-color: var(--color-primary-accent); }
+        .theme-toggle-btn svg { width: 24px; height: 24px; }
+        
+        /* Logika Sembunyi/Muncul Icon Tema */
+        html:not(.darkmode) .theme-toggle-btn svg:nth-child(2) { display: none; }
+        html.darkmode .theme-toggle-btn svg:nth-child(1) { display: none; }
+
+        /* --- STYLING GLASSMORPHISM CARD --- */
+        .glass-card {
+            background: var(--color-surface-bg-3);
+            border: 1px solid var(--color-border-1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: 0.3s;
+        }
+
+        /* --- HEADER & PROFIL --- */
+        .header-cv { text-align: center; animation: fadeIn 0.8s ease-out; }
+        .profile-img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid var(--color-surface-bg-1); box-shadow: 0 15px 35px rgba(49, 181, 213, 0.2); margin-bottom: 20px; }
+        h1 { font-size: 36px; font-weight: 800; margin: 0 0 5px 0; letter-spacing: -0.5px; }
+        .subtitle { font-size: 18px; font-weight: 500; color: var(--color-text-2); margin: 0 0 25px 0; }
+        .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .badge-link { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--color-surface-bg-1); border: 1px solid var(--color-border-1); border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--color-primary-text); }
+        .badge-link:hover { background: var(--color-surface-bg-5); border-color: var(--color-primary-accent); text-decoration: none; }
+
+        /* --- TIPOGRAFI & KONTEN --- */
+        h2 { font-size: 24px; color: var(--color-primary-accent); border-bottom: 2px dashed var(--color-border-1); padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        p { color: var(--color-text-6); text-align: justify; }
+
+        /* --- GRID LAYOUT --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        /* --- LIST STYLING --- */
+        ul.formal-list { padding-left: 20px; color: var(--color-text-6); }
+        ul.formal-list li { margin-bottom: 10px; }
+        ul.formal-list li strong { color: var(--color-primary-text); }
+
+        /* --- TABEL CUSTOM --- */
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 16px; text-align: left; border-bottom: 1px solid var(--color-border-1); }
+        th { background: var(--color-surface-bg-5); color: var(--color-primary-text); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { color: var(--color-text-6); font-size: 15px; }
+        tr:hover td { background: var(--color-surface-bg-1); }
+        
+        .instansi-logo { height: 30px; vertical-align: middle; margin-right: 10px; border-radius: 4px; background: white; padding: 2px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .theme-toggle-btn { top: 15px; right: 15px; width: 40px; height: 40px; }
+            .glass-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Ganti Tema (Light/Dark) -->
+    <button class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Tema">
+        <!-- Icon Bulan (Tampil saat Light Mode) -->
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z"></path></svg>
+        <!-- Icon Matahari (Tampil saat Dark Mode) -->
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z"></path></svg>
+    </button>
+
+    <div class="container">
+        
+        <!-- BAGIAN 1: HEADER & PROFIL -->
+        <div class="glass-card header-cv">
+            <!-- Gambar 1: Foto Diri -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Ibnusta.jpg" alt="Ibnu Syifa Takbir Adha" class="profile-img">
+            <h1>Ibnu Syifa Takbir Adha</h1>
+            <div class="subtitle">Mahasiswa Informatika Universitas Siber Asia</div>
+            
+            <div class="contact-links">
+                <!-- Link 1: Eksternal -->
+                <a href="https://github.com/ibnusta" target="_blank" class="badge-link">
+                    <i class="fab fa-github"></i> Repository Akademik
+                </a>
+                <!-- Link 2: Eksternal -->
+                <a href="https://share.google/IBuzmNkz3w2rnAEYX" target="_blank" class="badge-link">
+                    <i class="fab fa-google"></i> Profil
+                </a>
+                <!-- Link 3: Internal (Anchor) -->
+                <a href="#riwayat-pendidikan" class="badge-link">
+                    <i class="fas fa-graduation-cap"></i> Data Akademis
+                </a>
+            </div>
+        </div>
+
+        <!-- BAGIAN 2: DESKRIPSI DIRI FORMAL -->
+        <div class="glass-card">
+            <h2><i class="fas fa-user-tie"></i> Ringkasan Profil</h2>
+            <p>
+                Saya adalah seorang mahasiswa program <strong>Double Degree</strong> yang mengkombinasikan disiplin ilmu di bidang <em>Ilmu Hukum</em> dan <em>Informatika</em>. Secara akademis, saya berfokus pada studi persimpangan antara regulasi hukum digital (Cyber Law) dengan implementasi sistem teknologi informasi. Ketertarikan utama saya terletak pada perancangan arsitektur perangkat lunak berskala besar yang tetap mematuhi prinsip-prinsip privasi dan perlindungan data elektronik.
+            </p>
+            <p>
+                Berbekal pengalaman teknis di industri melalui pengembangan arsitektur <mark style="background: var(--color-surface-bg-5); color: var(--color-primary-accent); border-radius: 4px; padding: 0 4px;">Sistem Informasi & SaaS</mark>, saya berdedikasi untuk terus melakukan riset dan inovasi. Tujuan karir jangka panjang saya adalah menjembatani kesenjangan antara kebijakan hukum dengan laju inovasi teknologi, serta berkontribusi dalam perancangan infrastruktur <i>Smart City</i> yang efisien, transparan, dan inklusif di Indonesia.
+            </p>
+        </div>
+
+        <div class="grid-2">
+            <!-- BAGIAN 3: DAFTAR KEAHLIAN -->
+            <div class="glass-card">
+                <h2><i class="fas fa-cogs"></i> Kompetensi Akademis</h2>
+                
+                <!-- List 1 -->
+                <h4 style="margin-bottom: 10px;">Kompetensi Teknis (Hard Skills)</h4>
+                <ul class="formal-list">
+                    <li><strong>Pengembangan Web:</strong> PHP (Native/Laravel), ReactJS, Node.js.</li>
+                    <li><strong>Manajemen Basis Data:</strong> MySQL, PostgreSQL.</li>
+                    <li><strong>UI/UX Engineering:</strong> Implementasi metodologi <em>Glassmorphism</em>.</li>
+                    <li><strong>Mobile Development:</strong> Membangun Aplikasi Android menggunakan Android Studio.</li>
+                </ul>
+
+                <!-- List 2 -->
+                <h4 style="margin-top: 25px; margin-bottom: 10px;">Kompetensi Manajerial (Soft Skills)</h4>
+                <ul class="formal-list">
+                    <li>Analisis Sistem & <em>Problem Solving</em> tingkat lanjut.</li>
+                    <li>Manajemen Proyek TI (<em>IT Project Management</em>).</li>
+                    <li>Pemahaman Regulasi dan Kebijakan Digital.</li>
+                </ul>
+            </div>
+
+            <!-- BAGIAN 4: RIWAYAT PENDIDIKAN -->
+            <div class="glass-card" id="riwayat-pendidikan">
+                <h2><i class="fas fa-university"></i> Pendidikan</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Institusi Pendidikan</th>
+                                <th>Program Studi</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!-- Gambar 2 -->
+                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv8Uk3K9YQzAiwUCdfVtBH_cWS6lN2wjoKRb9shRSxadhqT2EQphE3x_ueTJA9MoWz2zXJBcjd30CUAgIYhtdsAvVJ8P85wDBC2jFdvfbuVEkHToAhh4l62plugBnh5BWgDr3nW0OLW6Knb6RxoCWyy1poMwCM4vwJLsOqW52mLJgVtNEo6MqRbVn9rMvq/s1600/ut.png" alt="Logo UT" class="instansi-logo">
+                                    <strong>Universitas Terbuka</strong>
+                                </td>
+                                <td>Ilmu Hukum</td>
+                                <td>Semester 4</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- Gambar 3 -->
+                                    <img src="https://unsia.ac.id/wp-content/uploads/2022/12/LOGO-NUSIA-e1671212935614.png" alt="Logo UNSIA" class="instansi-logo">
+                                    <strong>Universitas Siber Asia</strong>
+                                </td>
+                                <td>Informatika</td>
+                                <td>Semester 1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 5: PENGALAMAN & PROYEK (Tabel 2) -->
+        <div class="glass-card">
+            <h2><i class="fas fa-project-diagram"></i> Pengalaman Proyek</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Proyek / Posisi</th>
+                            <th>Deskripsi Teknis</th>
+                            <th>Tahun Pelaksanaan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sistem Tracking produk</strong></td>
+                            <td>Pengembangan sistem tracking produk lokal percetakan menggunakan arsitektur PHP dan SQL.</td>
+                            <td>2024</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Platform Alquran digital</strong></td>
+                            <td>Perancangan al-quran digital dengan integrasi API eksternal untuk distribusi konten.</td>
+                            <td>2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sistem Penjualan</strong></td>
+                            <td>Bertanggung jawab atas manajemen proyek perangkat lunak dari proses <em>requirement gathering</em> hingga tahap <em>deployment</em>.</td>
+                            <td>Sekarang</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT UNTUK TOGGLE DARK/LIGHT MODE -->
+    <script>
+        function toggleTheme() {
+            let htmlRoot = document.documentElement;
+            if (htmlRoot.classList.contains('darkmode')) {
+                htmlRoot.classList.remove('darkmode');
+                localStorage.setItem("darkmode", 0); // Simpan status Light
+            } else {
+                htmlRoot.classList.add('darkmode');
+                localStorage.setItem("darkmode", 1); // Simpan status Dark
+            }
+        }
+    </script>
+</body>
+</html>
